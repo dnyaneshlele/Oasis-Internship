@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+class ATMinterface
+{
+  public static void main(String args[])
+  {
+	  int accno,ch;
+	  String Acctype;
+	  double balance = 10000.0;
+	  Scanner sc = new Scanner(System.in);
+	   do
+	   {
+				   System.out.println("Menu\n1:Balance checking\n2:Withdraw Ammount\n3:Deposite Ammount\n4:Transfer\n5:Quit");
+				   System.out.println("\n Enter the choice :----->");
+				   ch = sc.nextInt();
+
+										switch(ch)
+										{
+										   case 1 : System.out.println("Your balance is " + balance);
+														break;
+
+											  case 2 : System.out.print("Enter the amount to withdraw: ");
+													int withdrawAmount = sc.nextInt();
+													if (withdrawAmount > balance)
+													{
+														System.out.println("Insufficient balance");
+													}
+													else
+													{
+														balance -= withdrawAmount;
+														System.out.println("Transaction successful");
+													}
+													break;
+
+										 case 3 : System.out.print("Enter the amount to deposite: ");
+												  int depositAmount = sc.nextInt();
+												  balance += depositAmount;
+												  System.out.println("Transaction successful");
+												   break;
+
+										 case 4:         System.out.println("Enter the amount to transfer: ");
+													  int transferAmount = sc.nextInt();
+													  if (transferAmount < balance)
+													  {
+														   System.out.print("Enter the account number to transfer: ");
+															  int accountNumber = sc.nextInt();
+															  System.out.println("Transfer successful");
+														  balance -= transferAmount;
+													  }
+													  else
+													  {
+														 System.out.println("Insufficient balance");
+													  }
+
+													  break;
+
+										  case 5 : System.exit(0);
+														break;
+				 }
+	   }while(ch<=5);
+  }
+}
